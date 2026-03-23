@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import portfolioData from "../data/portfolio";
@@ -11,16 +11,42 @@ interface NavbarProps {
 export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#hero");
   const { navLinks, personal } = portfolioData;
 
+  // Scroll-spy: detect which section is currently in view
+  const updateActiveSection = useCallback(() => {
+    setIsScrolled(window.scrollY > 50);
+
+    const sections = navLinks
+      .map((link) => {
+        const el = document.querySelector(link.href);
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        return { href: link.href, top: rect.top };
+      })
+      .filter(Boolean) as { href: string; top: number }[];
+
+    // Find the section closest to the top of the viewport (with offset for navbar)
+    const offset = 120;
+    let current = "#hero";
+    for (const section of sections) {
+      if (section.top <= offset) {
+        current = section.href;
+      }
+    }
+    setActiveSection(current);
+  }, [navLinks]);
+
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    updateActiveSection(); // initial check
+    return () => window.removeEventListener("scroll", updateActiveSection);
+  }, [updateActiveSection]);
 
   const handleNavClick = (href: string) => {
     setIsMobileOpen(false);
+    setActiveSection(href);
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -57,21 +83,40 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className="relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-xl"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href;
+                return (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(link.href);
+                    }}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-colors ${
+                      isActive
+                        ? "text-indigo-600 dark:text-indigo-400"
+                        : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {link.label}
+                    {/* Active indicator dot + bar */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-active-indicator"
+                        className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </motion.a>
+                );
+              })}
               <div className="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2" />
               <motion.button
                 onClick={toggleTheme}
@@ -129,22 +174,32 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
               className="absolute right-0 top-0 bottom-0 w-72 bg-white dark:bg-slate-900 shadow-2xl p-6 pt-20"
             >
               <div className="flex flex-col gap-2">
-                {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    className="px-4 py-3 text-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 rounded-xl transition-colors"
-                  >
-                    {link.label}
-                  </motion.a>
-                ))}
+                {navLinks.map((link, i) => {
+                  const isActive = activeSection === link.href;
+                  return (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(link.href);
+                      }}
+                      className={`px-4 py-3 text-lg font-medium rounded-xl transition-colors flex items-center gap-3 ${
+                        isActive
+                          ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-l-4 border-indigo-500"
+                          : "text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                      }`}
+                    >
+                      {isActive && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                      )}
+                      {link.label}
+                    </motion.a>
+                  );
+                })}
               </div>
             </motion.div>
           </motion.div>

@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-slate-50/50 dark:bg-slate-900/50"
+      className="py-24 md:py-32 relative bg-slate-50/30 dark:bg-slate-900/30 backdrop-blur-[1px]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading

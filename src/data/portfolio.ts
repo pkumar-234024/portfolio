@@ -75,7 +75,9 @@ const portfolioData: PortfolioData = {
     objective:
       "To leverage my expertise in modern web technologies and software engineering principles to deliver high-impact, user-centric digital products. I thrive in collaborative environments where innovation meets execution, and I'm driven by the pursuit of clean code and exceptional user experiences.",
     resumeUrl: "#",
-    avatarUrl: undefined,
+    // 👇 Add your profile photo to /public/profile.jpg (or .png)
+    // Then set: avatarUrl: "/profile.jpg"
+    avatarUrl: "/profile.jpg",
   },
 
   socialLinks: [

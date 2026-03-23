@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { useTheme } from "./hooks/useTheme";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
+import FloatingBackground from "./components/FloatingBackground";
 import Footer from "./components/Footer";
 import Hero from "./sections/Hero/Hero";
 
@@ -25,6 +26,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Global 3D floating background - visible across ALL sections */}
+      <FloatingBackground />
+
       <ScrollProgress />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
 
