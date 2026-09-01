@@ -57,8 +57,13 @@ export default function Experience() {
                         <h3 className="text-xl font-bold text-slate-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                           {exp.role}
                         </h3>
-                        <p className="text-indigo-600 dark:text-indigo-400 font-semibold">
+                        <p className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2">
                           {exp.company}
+                          {exp.location && (
+                            <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
+                              • {exp.location}
+                            </span>
+                          )}
                         </p>
                       </div>
                     </div>

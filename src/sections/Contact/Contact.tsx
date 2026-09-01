@@ -11,12 +11,14 @@ import {
   FiInstagram,
   FiCheckCircle,
 } from "react-icons/fi";
+import { SiLeetcode } from "react-icons/si";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
 const socialIconMap: Record<string, React.ReactNode> = {
   github: <FiGithub size={20} />,
   linkedin: <FiLinkedin size={20} />,
+  leetcode: <SiLeetcode size={20} />,
   twitter: <FiTwitter size={20} />,
   instagram: <FiInstagram size={20} />,
 };

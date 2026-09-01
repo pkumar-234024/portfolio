@@ -11,6 +11,7 @@ const About = lazy(() => import("./sections/About/About"));
 const Experience = lazy(() => import("./sections/Experience/Experience"));
 const Projects = lazy(() => import("./sections/Projects/Projects"));
 const Skills = lazy(() => import("./sections/Skills/Skills"));
+const CoverLetter = lazy(() => import("./sections/CoverLetter/CoverLetter"));
 const Contact = lazy(() => import("./sections/Contact/Contact"));
 
 function SectionLoader() {
@@ -47,6 +48,9 @@ export default function App() {
           <Skills />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
+          <CoverLetter />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
           <Contact />
         </Suspense>
       </main>
@@ -55,3 +59,4 @@ export default function App() {
     </div>
   );
 }
+

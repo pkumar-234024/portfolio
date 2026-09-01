@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiHeart } from "react-icons/fi";
+import { SiLeetcode } from "react-icons/si";
 import portfolioData from "../data/portfolio";
 
 const socialIconMap: Record<string, React.ReactNode> = {
   github: <FiGithub size={18} />,
   linkedin: <FiLinkedin size={18} />,
+  leetcode: <SiLeetcode size={18} />,
   twitter: <FiTwitter size={18} />,
   instagram: <FiInstagram size={18} />,
 };

@@ -1,24 +1,36 @@
 // ============================================================
-// Portfolio Data - Edit this file to customize your portfolio
+// Portfolio Data - Updated from Resume and Cover Letter
 // ============================================================
 
 export interface Project {
   id: number;
   title: string;
+  subtitle?: string;
   description: string;
+  achievements?: string[];
   techStack: string[];
   github?: string;
   demo?: string;
   image?: string;
+  badge?: string;
 }
 
 export interface Experience {
   id: number;
   role: string;
   company: string;
+  location?: string;
   duration: string;
   description: string;
   achievements: string[];
+}
+
+export interface Education {
+  id: number;
+  degree: string;
+  institution: string;
+  grade: string;
+  year: string;
 }
 
 export interface Skill {
@@ -38,6 +50,13 @@ export interface SocialLink {
   icon: string;
 }
 
+export interface CoverLetterData {
+  salutation: string;
+  paragraphs: string[];
+  signOff: string;
+  name: string;
+}
+
 export interface PortfolioData {
   personal: {
     name: string;
@@ -55,8 +74,10 @@ export interface PortfolioData {
   };
   socialLinks: SocialLink[];
   experience: Experience[];
+  education: Education[];
   projects: Project[];
   skillCategories: SkillCategory[];
+  coverLetter: CoverLetterData;
   navLinks: { label: string; href: string }[];
 }
 
@@ -65,41 +86,34 @@ const portfolioData: PortfolioData = {
     name: "Praveen Kumar",
     firstName: "Praveen",
     lastName: "Kumar",
-    title: "Full Stack Developer",
-    tagline: "Building digital experiences that make a difference",
-    email: "praveen@example.com",
-    phone: "+91 9876543210",
-    location: "Bangalore, India",
+    title: "Full-Stack .NET Developer",
+    tagline: "Innovative Full-Stack .NET Developer with almost 5 years of experience building scalable, secure, and high-performing web applications.",
+    email: "praveen991210@gmail.com",
+    phone: "800-524-1110",
+    location: "Noida, UP, India",
     about:
-      "I'm a passionate Full Stack Developer with 4 years of experience crafting robust, scalable web applications. I specialize in React, Node.js, and cloud technologies, with a keen eye for UI/UX design. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+      "Innovative Full-Stack .NET Developer with almost 5 years of experience delivering scalable, secure, and high-performing web solutions across diverse projects. Expertise in front-end and back-end development, system architecture, RESTful API development using Entity Framework and LINQ, and database optimization. Known for writing clean, maintainable code and driving efficient development practices to deliver impactful digital experiences.",
     objective:
-      "To leverage my expertise in modern web technologies and software engineering principles to deliver high-impact, user-centric digital products. I thrive in collaborative environments where innovation meets execution, and I'm driven by the pursuit of clean code and exceptional user experiences.",
+      "To design and build secure REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver quality software solutions, leveraging Clean Architecture, object-oriented programming, and clean coding practices to drive impactful digital experiences.",
     resumeUrl: "#",
-    // 👇 Add your profile photo to /public/profile.jpg (or .png)
-    // Then set: avatarUrl: "/profile.jpg"
     avatarUrl: "/profile.jpg",
   },
 
   socialLinks: [
     {
-      name: "GitHub",
-      url: "https://github.com/praveen",
-      icon: "github",
-    },
-    {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/praveen",
+      url: "https://linkedin.com",
       icon: "linkedin",
     },
     {
-      name: "Twitter",
-      url: "https://twitter.com/praveen",
-      icon: "twitter",
+      name: "GitHub",
+      url: "https://github.com",
+      icon: "github",
     },
     {
-      name: "Instagram",
-      url: "https://instagram.com/praveen",
-      icon: "instagram",
+      name: "LeetCode",
+      url: "https://leetcode.com",
+      icon: "leetcode",
     },
   ],
 
@@ -109,148 +123,233 @@ const portfolioData: PortfolioData = {
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
+    { label: "Cover Letter", href: "#cover-letter" },
     { label: "Contact", href: "#contact" },
   ],
 
   experience: [
     {
       id: 1,
-      role: "Senior Frontend Developer",
-      company: "TechCorp Solutions",
-      duration: "Jan 2024 – Present",
+      role: "Software Developer",
+      company: "Intellisoft Technologies",
+      location: "Noida, UP",
+      duration: "Sep 2021 – Aug 2026",
       description:
-        "Leading frontend development for enterprise SaaS products, mentoring junior developers, and driving architectural decisions.",
+        "Engineered scalable, maintainable full-stack solutions using ASP.NET Core, MVC, Web API, and C#, leveraging Clean Architecture, Code-First, and Database-First approaches to meet diverse client needs.",
       achievements: [
-        "Architected a micro-frontend system serving 50K+ daily users",
-        "Reduced page load time by 40% through code splitting and lazy loading",
-        "Led migration from JavaScript to TypeScript across 15+ repositories",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
+        "Spearheaded process improvements that increased project delivery efficiency by 40% and shortened development cycle times by 20%, delivering projects faster and with higher quality.",
+        "Optimized complex SQL queries and back-end logic to deliver a 20% boost in database performance and a 25% overall increase in system responsiveness.",
+        "Engineered scalable, maintainable solutions using ASP.NET, MVC, Web API, and C#, leveraging Clean Architecture, Code-First, and Database-First approaches.",
+        "Championed best coding practices and code reviews to maintain high-quality standards across the team.",
+        "Mentored and trained interns, leading to a 30% improvement in their technical skills, confidence, and contribution to project success.",
+        "Collaborated cross-functionally with front-end developers, QA teams, and project managers to ensure seamless integration and on-time delivery.",
       ],
+    },
+  ],
+
+  education: [
+    {
+      id: 1,
+      degree: "B.Tech (Computer Science & Engineering)",
+      institution: "Bundelkhand University",
+      grade: "CGPA — 7.5 / 10.0",
+      year: "2017 – 2021",
     },
     {
       id: 2,
-      role: "Full Stack Developer",
-      company: "InnovateTech Pvt Ltd",
-      duration: "Jun 2022 – Dec 2023",
-      description:
-        "Built and maintained full-stack applications using React, Node.js, and PostgreSQL for diverse client projects.",
-      achievements: [
-        "Developed a real-time dashboard processing 1M+ data points daily",
-        "Built RESTful APIs handling 10K+ requests per minute",
-        "Integrated payment gateways increasing transaction success rate by 25%",
-        "Mentored 3 junior developers and conducted code reviews",
-      ],
+      degree: "Intermediate (12th Grade)",
+      institution: "Board Of High and Intermediate Education (U.P)",
+      grade: "Percentage — 79%",
+      year: "March 2016",
     },
     {
       id: 3,
-      role: "Junior Software Developer",
-      company: "StartupHub",
-      duration: "Mar 2021 – May 2022",
-      description:
-        "Contributed to product development in an agile startup environment, working across the full stack.",
-      achievements: [
-        "Built responsive UI components used across 5 product modules",
-        "Implemented OAuth 2.0 authentication supporting 3 providers",
-        "Reduced bug count by 30% through comprehensive unit testing",
-        "Collaborated with designers to implement pixel-perfect UI designs",
-      ],
+      degree: "High School (10th Grade)",
+      institution: "Board Of High and Intermediate Education (U.P)",
+      grade: "Percentage — 85%",
+      year: "March 2014",
     },
   ],
 
   projects: [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "Sonora Construction",
+      subtitle: ".NET Core MVC, C#, Entity Framework, SQL Server, SyncFusion, AJAX, JavaScript, RDLC, SMTP, QuickBooks",
       description:
-        "A full-featured e-commerce platform with real-time inventory management, payment processing, and an admin dashboard. Supports multi-vendor operations with role-based access control.",
-      techStack: ["React", "Node.js", "MongoDB", "Stripe", "Redis"],
-      github: "https://github.com/praveen/ecommerce",
-      demo: "https://ecommerce-demo.vercel.app",
+        "Enterprise construction management platform modernization. Migrated legacy MS Access system to a modernized .NET Core MVC application using Database-First approach and SQL Server stored procedures.",
+      techStack: [
+        ".NET Core MVC",
+        "C#",
+        "Entity Framework",
+        "SQL Server",
+        "SyncFusion",
+        "AJAX",
+        "RDLC Reports",
+        "QuickBooks API",
+      ],
+      achievements: [
+        "Migrated legacy MS Access database to .NET Core MVC using Database-First approach & SQL Server stored procedures, improving maintainability & scalability.",
+        "Consolidated multiple websites into a single multi-tenant platform, delivering a unified user experience.",
+        "Implemented role-based authentication and authorization with full dependency injection for clean, testable code.",
+        "Integrated SYNCFUSION UI components to accelerate frontend development, reducing UI dev time & cost by 35%.",
+        "Developed dynamic RDLC reports, SMTP transactional alert engine, and custom QuickBooks timesheet sync console.",
+        "Boosted user experience & performance by 40% through AJAX-based seamless rendering.",
+      ],
     },
     {
       id: 2,
-      title: "AI Chat Application",
+      title: "eco On Site",
+      subtitle: "Smart Waste Monitoring System | ASP.NET Core Web API, Entity Framework, SQL Server, Flutter, React",
       description:
-        "Real-time chat application powered by AI with smart suggestions, message translation, and sentiment analysis. Features end-to-end encryption and WebSocket communication.",
-      techStack: ["Next.js", "OpenAI", "Socket.io", "PostgreSQL", "Tailwind"],
-      github: "https://github.com/praveen/ai-chat",
-      demo: "https://ai-chat-demo.vercel.app",
+        "Full-stack waste collection platform powering a Flutter mobile application and React admin dashboard with real-time pickup tracking and analytics.",
+      techStack: [
+        "ASP.NET Core Web API",
+        "Entity Framework Core",
+        "SQL Server",
+        "React.js",
+        "Flutter",
+        "JWT & RBAC",
+      ],
+      achievements: [
+        "Designed and developed secure RESTful APIs using ASP.NET Core Web API and Entity Framework Core.",
+        "Implemented JWT authentication and Role-Based Access Control (RBAC) to secure API endpoints across mobile and web clients.",
+        "Built real-time collection tracking endpoints to log and update waste pickup status across late, missed, and successful events.",
+        "Developed backend analytics dashboards aggregating collection event data to surface actionable operational insights.",
+        "Optimized database schema and queries in SQL Server to efficiently handle collection event logging at scale.",
+      ],
     },
     {
       id: 3,
-      title: "Project Management Tool",
+      title: "Bar-Patrol",
+      subtitle: "C#, .NET Core Web API, React, SQL Server, Azure, SendGrid, CQRS",
       description:
-        "A comprehensive project management tool with Kanban boards, Gantt charts, time tracking, and team collaboration features. Built for agile teams.",
-      techStack: ["React", "TypeScript", "GraphQL", "Prisma", "AWS"],
-      github: "https://github.com/praveen/project-mgmt",
-      demo: "https://pm-tool-demo.vercel.app",
+        "High-availability venue inventory and management platform. Applied CQRS pattern to separate read and write operations, optimized SQL stored procedures (40% query latency reduction), and deployed on Azure.",
+      techStack: [
+        ".NET Core Web API",
+        "C#",
+        "React.js",
+        "SQL Server",
+        "CQRS Pattern",
+        "Azure",
+        "SendGrid",
+      ],
+      badge: "Live Site",
+      achievements: [
+        "Developed secure RESTful APIs with authentication, role-based authorization, advanced filtering, and custom middleware.",
+        "Applied CQRS (Command Query Responsibility Segregation) pattern to separate read and write operations.",
+        "Optimized data access with SQL Server stored procedures, reducing query latency by 40%.",
+        "Deployed application on Azure for high availability and integrated SendGrid for transactional email delivery.",
+      ],
     },
     {
       id: 4,
-      title: "Real-Time Analytics Dashboard",
+      title: "BullDog",
+      subtitle: "C#, Console Application, SQL Server, Selenium, Salesforce API, Windows Services",
       description:
-        "Interactive analytics dashboard with real-time data visualization, custom reports, and predictive analytics powered by machine learning models.",
-      techStack: ["Vue.js", "D3.js", "Python", "FastAPI", "Docker"],
-      github: "https://github.com/praveen/analytics",
-      demo: "https://analytics-demo.vercel.app",
+        "Automated real estate web scraping engine built in C# using Selenium. Scheduled continuous updates via Windows Service and pushed transformed data directly into Salesforce REST API.",
+      techStack: [
+        "C#",
+        "Console Application",
+        "Selenium",
+        "Windows Services",
+        "Salesforce REST API",
+        "SQL Server",
+      ],
+      achievements: [
+        "Built a C# console application to automate web scraping from Redfin and Redfin Agent websites using Selenium.",
+        "Developed a Windows Service scheduler to run the scraping engine at predefined intervals for continuous data updates.",
+        "Parsed and transformed scraped data, pushing it directly to Salesforce via Salesforce REST API for seamless CRM integration.",
+        "Stored and transformed data in SQL Server for logging, reporting, and backup with zero manual intervention.",
+      ],
     },
     {
       id: 5,
-      title: "Social Media Scheduler",
+      title: "Security Trax",
+      subtitle: "React, .NET Core Web API, C#, Bootstrap, SQL Server, Entity Framework",
       description:
-        "Automated social media management platform with AI-powered content suggestions, scheduling, analytics, and multi-platform support.",
-      techStack: ["React", "Node.js", "Bull MQ", "Redis", "OAuth"],
-      github: "https://github.com/praveen/social-scheduler",
-    },
-    {
-      id: 6,
-      title: "DevOps Monitoring Suite",
-      description:
-        "Comprehensive monitoring solution for microservices with alerting, log aggregation, performance metrics, and automated incident response.",
-      techStack: ["React", "Go", "Prometheus", "Grafana", "K8s"],
-      github: "https://github.com/praveen/devops-monitor",
-      demo: "https://monitor-demo.vercel.app",
+        "Modern security service dashboard and report generation engine built with React.js and ASP.NET Core Web API, achieving a 30% improvement in data retrieval speed.",
+      techStack: [
+        "React.js",
+        "ASP.NET Core Web API",
+        "C#",
+        "Entity Framework",
+        "SQL Server",
+        "Bootstrap",
+      ],
+      achievements: [
+        "Developed a modern, responsive React.js dashboard to schedule appointments and generate detailed security service reports.",
+        "Designed and deployed scalable RESTful APIs with .NET Core and Entity Framework, achieving a 30% improvement in data retrieval speed.",
+        "Implemented robust authentication & authorization workflows to secure API endpoints.",
+        "Integrated middleware for logging, error handling, and request validation for a maintainable backend architecture.",
+      ],
     },
   ],
 
   skillCategories: [
     {
-      category: "Frontend",
-      icon: "frontend",
-      skills: [
-        { name: "React / Next.js", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Tailwind CSS", level: 92 },
-        { name: "HTML5 / CSS3", level: 95 },
-        { name: "Vue.js", level: 75 },
-        { name: "Three.js", level: 65 },
-      ],
-    },
-    {
-      category: "Backend",
+      category: "Backend & .NET",
       icon: "backend",
       skills: [
-        { name: "Node.js / Express", level: 90 },
-        { name: "Python / Django", level: 78 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 82 },
-        { name: "GraphQL", level: 75 },
-        { name: "Redis", level: 70 },
+        { name: "C#", level: 95 },
+        { name: "ASP.NET Core", level: 95 },
+        { name: "ASP.NET Web API", level: 92 },
+        { name: "ASP.NET MVC", level: 90 },
+        { name: "Entity Framework Core / EF", level: 92 },
+        { name: "LINQ & CQRS Pattern", level: 88 },
+        { name: "RESTful APIs", level: 95 },
+        { name: "Dependency Injection", level: 90 },
       ],
     },
     {
-      category: "Tools & DevOps",
+      category: "Frontend Development",
+      icon: "frontend",
+      skills: [
+        { name: "React.js", level: 88 },
+        { name: "TypeScript", level: 85 },
+        { name: "JavaScript (ES6+)", level: 90 },
+        { name: "HTML5 / CSS3", level: 92 },
+        { name: "Bootstrap / Tailwind", level: 88 },
+        { name: "AJAX & SyncFusion UI", level: 85 },
+      ],
+    },
+    {
+      category: "Database & Cloud",
+      icon: "database",
+      skills: [
+        { name: "Microsoft SQL Server", level: 92 },
+        { name: "T-SQL / Stored Procedures", level: 95 },
+        { name: "Query Optimization", level: 90 },
+        { name: "Azure App Services", level: 85 },
+        { name: "Azure SQL Database", level: 85 },
+        { name: "Azure Storage & DevOps", level: 80 },
+      ],
+    },
+    {
+      category: "Tools, Security & Practices",
       icon: "tools",
       skills: [
-        { name: "Git / GitHub", level: 92 },
-        { name: "Docker", level: 80 },
-        { name: "AWS / GCP", level: 75 },
-        { name: "CI/CD", level: 82 },
-        { name: "Linux", level: 78 },
-        { name: "Figma", level: 70 },
+        { name: "JWT & Role-Based Auth (RBAC)", level: 90 },
+        { name: "Visual Studio 2022 / SSMS", level: 95 },
+        { name: "Git / Bitbucket / Sourcetree", level: 90 },
+        { name: "Postman / Swagger (OpenAPI)", level: 92 },
+        { name: "Selenium & Unit Testing", level: 82 },
+        { name: "OOP / SOLID / Clean Architecture", level: 92 },
       ],
     },
   ],
+
+  coverLetter: {
+    salutation: "Dear Hiring Manager,",
+    paragraphs: [
+      "I am excited to apply for the C# Developer position. With almost 5 years of experience in C#, ASP.NET Core, Web API, Entity Framework, and SQL Server, I have developed and maintained scalable, high-performance applications across various domains.",
+      "In my current role, I design and build secure REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver quality software solutions. My strong understanding of object-oriented programming, clean coding practices, and problem-solving skills makes me confident in contributing effectively to your team.",
+      "I would welcome the opportunity to discuss how my skills and experience align with your requirements. Thank you for your time and consideration.",
+    ],
+    signOff: "Sincerely,",
+    name: "Praveen Kumar",
+  },
 };
 
 export default portfolioData;
+

@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
-import { FiCode, FiServer, FiTool } from "react-icons/fi";
+import { FiCode, FiServer, FiTool, FiDatabase } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  frontend: <FiCode className="text-indigo-500" size={28} />,
   backend: <FiServer className="text-purple-500" size={28} />,
+  frontend: <FiCode className="text-indigo-500" size={28} />,
+  database: <FiDatabase className="text-blue-500" size={28} />,
   tools: <FiTool className="text-pink-500" size={28} />,
 };
 
 const categoryGradients: Record<string, string> = {
-  frontend: "from-indigo-500 to-blue-500",
   backend: "from-purple-500 to-violet-500",
+  frontend: "from-indigo-500 to-blue-500",
+  database: "from-blue-500 to-cyan-500",
   tools: "from-pink-500 to-rose-500",
 };
 
@@ -22,27 +24,27 @@ export default function Skills() {
     <section id="skills" className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Skills"
-          subtitle="Technologies and tools I work with"
+          title="Technical Skills"
+          subtitle="Proficiency across backend architecture, databases, cloud, and modern frontend tools"
         />
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((cat, catIndex) => (
             <motion.div
               key={cat.category}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.6, delay: catIndex * 0.15 }}
+              transition={{ duration: 0.6, delay: catIndex * 0.12 }}
               className="group"
             >
-              <div className="p-6 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all h-full">
+              <div className="p-6 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all h-full">
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-700/50 group-hover:scale-110 transition-transform">
+                  <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-700/50 group-hover:scale-110 transition-transform">
                     {categoryIcons[cat.icon] || <FiCode size={28} />}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white">
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-white">
                     {cat.category}
                   </h3>
                 </div>
@@ -56,14 +58,14 @@ export default function Skills() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{
-                        delay: catIndex * 0.15 + skillIndex * 0.08,
+                        delay: catIndex * 0.12 + skillIndex * 0.05,
                       }}
                     >
                       <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                           {skill.name}
                         </span>
-                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
                           {skill.level}%
                         </span>
                       </div>
@@ -74,7 +76,7 @@ export default function Skills() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 1,
-                            delay: catIndex * 0.15 + skillIndex * 0.1,
+                            delay: catIndex * 0.12 + skillIndex * 0.08,
                             ease: "easeOut",
                           }}
                           className={`h-full rounded-full bg-gradient-to-r ${
@@ -93,3 +95,4 @@ export default function Skills() {
     </section>
   );
 }
+

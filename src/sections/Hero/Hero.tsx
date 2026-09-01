@@ -7,13 +7,16 @@ import {
   FiTwitter,
   FiInstagram,
   FiUser,
+  FiFileText,
 } from "react-icons/fi";
+import { SiLeetcode } from "react-icons/si";
 import portfolioData from "../../data/portfolio";
 import HeroScene from "../../components/HeroScene";
 
 const socialIconMap: Record<string, React.ReactNode> = {
   github: <FiGithub size={20} />,
   linkedin: <FiLinkedin size={20} />,
+  leetcode: <SiLeetcode size={20} />,
   twitter: <FiTwitter size={20} />,
   instagram: <FiInstagram size={20} />,
 };
@@ -40,7 +43,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16 md:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,6 +161,23 @@ export default function Hero() {
             >
               View My Work
             </motion.a>
+
+            <motion.a
+              href="#cover-letter"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#cover-letter")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/50 text-indigo-700 dark:text-indigo-300 font-semibold hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-all shadow-sm flex items-center gap-2"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiFileText size={18} />
+              Cover Letter
+            </motion.a>
+
             <motion.a
               href="#contact"
               onClick={(e) => {
@@ -220,3 +240,4 @@ export default function Hero() {
     </section>
   );
 }
+
