@@ -102,17 +102,17 @@ const portfolioData: PortfolioData = {
   socialLinks: [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/praveen991210/",
       icon: "linkedin",
     },
     {
       name: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/pkumar-234024",
       icon: "github",
     },
     {
       name: "LeetCode",
-      url: "https://leetcode.com",
+      url: "https://leetcode.com/u/praveen991210/",
       icon: "leetcode",
     },
   ],

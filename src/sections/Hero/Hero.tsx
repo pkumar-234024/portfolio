@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-10 md:pt-24 pb-10 md:pb-24"
     >
       {/* 3D Scene */}
       <Suspense fallback={null}>
@@ -44,7 +44,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16 md:pt-0">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -256,4 +256,3 @@ export default function Hero() {
     </section>
   );
 }
-
