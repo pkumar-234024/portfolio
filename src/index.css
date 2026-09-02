@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ===== Custom CSS Variables & Base ===== */
 @layer base {
   :root {

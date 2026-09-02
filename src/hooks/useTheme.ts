@@ -12,10 +12,13 @@ export function useTheme() {
 
   useEffect(() => {
     const root = document.documentElement;
+    const body = document.body;
     if (isDark) {
       root.classList.add("dark");
+      body.classList.add("dark");
     } else {
       root.classList.remove("dark");
+      body.classList.remove("dark");
     }
     localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
   }, [isDark]);
