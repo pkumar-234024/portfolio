@@ -95,7 +95,7 @@ const portfolioData: PortfolioData = {
       "Innovative Full-Stack .NET Developer with almost 5 years of experience delivering scalable, secure, and high-performing web solutions across diverse projects. Expertise in front-end and back-end development, system architecture, RESTful API development using Entity Framework and LINQ, and database optimization. Known for writing clean, maintainable code and driving efficient development practices to deliver impactful digital experiences.",
     objective:
       "To design and build secure REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver quality software solutions, leveraging Clean Architecture, object-oriented programming, and clean coding practices to drive impactful digital experiences.",
-    resumeUrl: "#",
+    resumeUrl: "/Resumecv/Praveen_Resume_Sep.pdf",
     avatarUrl: "/profile.jpg",
   },
 

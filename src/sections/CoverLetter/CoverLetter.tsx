@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiCopy, FiCheck, FiMail, FiFileText } from "react-icons/fi";
+import { FiCopy, FiCheck, FiMail, FiFileText, FiDownload } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
@@ -52,24 +52,39 @@ export default function CoverLetter() {
               </div>
             </div>
 
-            <motion.button
-              onClick={handleCopy}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700/70 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-200/60 dark:border-slate-600/50 transition-all text-sm font-medium"
-            >
-              {copied ? (
-                <>
-                  <FiCheck className="text-green-500" size={16} />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <FiCopy size={16} />
-                  Copy Letter
-                </>
-              )}
-            </motion.button>
+            <div className="flex items-center gap-3">
+              <motion.a
+                href="/Resumecv/PRAVEEN-COVER-LETTER.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="PRAVEEN-COVER-LETTER.pdf"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/50 transition-all text-sm font-medium"
+              >
+                <FiDownload size={16} />
+                Download PDF
+              </motion.a>
+
+              <motion.button
+                onClick={handleCopy}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700/70 hover:bg-slate-200 dark:hover:bg-slate-600/50 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-600/50 transition-all text-sm font-medium"
+              >
+                {copied ? (
+                  <>
+                    <FiCheck className="text-green-500" size={16} />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <FiCopy size={16} />
+                    Copy Letter
+                  </>
+                )}
+              </motion.button>
+            </div>
           </div>
 
           {/* Letter Body */}

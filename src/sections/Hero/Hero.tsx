@@ -8,6 +8,7 @@ import {
   FiInstagram,
   FiUser,
   FiFileText,
+  FiDownload,
 } from "react-icons/fi";
 import { SiLeetcode } from "react-icons/si";
 import portfolioData from "../../data/portfolio";
@@ -155,12 +156,27 @@ export default function Hero() {
                   .querySelector("#projects")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:brightness-110 transition-all"
+              className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:brightness-110 transition-all"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               View My Work
             </motion.a>
+
+            {personal.resumeUrl && (
+              <motion.a
+                href={personal.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all flex items-center gap-2"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiDownload size={18} />
+                Download Resume
+              </motion.a>
+            )}
 
             <motion.a
               href="#cover-letter"
@@ -186,7 +202,7 @@ export default function Hero() {
                   .querySelector("#contact")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-8 py-3.5 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 font-semibold hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm"
+              className="px-7 py-3.5 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 font-semibold hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
