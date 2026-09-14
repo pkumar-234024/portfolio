@@ -10,6 +10,8 @@ import {
   FiTwitter,
   FiInstagram,
   FiCheckCircle,
+  FiAlertCircle,
+  FiLoader,
 } from "react-icons/fi";
 import { SiLeetcode } from "react-icons/si";
 import SectionHeading from "../../components/SectionHeading";
@@ -44,6 +46,8 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -60,15 +64,52 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      // In a real app, you'd send this data to a backend
-      console.log("Form submitted:", formData);
+    if (!validate()) return;
+
+    setIsLoading(true);
+    setSubmitError(null);
+
+    const emailBody =
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`;
+
+    try {
+      const res = await fetch(
+        "https://monacosender.runasp.net/api/Email/send",
+        {
+          method: "POST",
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: personal.email,
+            subject: `Portfolio Contact from ${formData.name}`,
+            body: emailBody,
+          }),
+        },
+      );
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `Server error: ${res.status}`);
+      }
+
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 4000);
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.";
+      setSubmitError(message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -191,6 +232,17 @@ export default function Contact() {
                 </motion.div>
               )}
 
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-start gap-2 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 text-red-700 dark:text-red-400"
+                >
+                  <FiAlertCircle size={18} className="mt-0.5 shrink-0" />
+                  <span className="font-medium">{submitError}</span>
+                </motion.div>
+              )}
+
               <div>
                 <label
                   htmlFor="contact-name"
@@ -273,12 +325,32 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                disabled={isLoading}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                whileHover={isLoading ? {} : { scale: 1.02 }}
+                whileTap={isLoading ? {} : { scale: 0.98 }}
               >
-                <FiSend size={18} />
-                Send Message
+                {isLoading ? (
+                  <>
+                    <motion.span
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 1,
+                        ease: "linear",
+                      }}
+                      className="inline-block"
+                    >
+                      <FiLoader size={18} />
+                    </motion.span>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <FiSend size={18} />
+                    Send Message
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
