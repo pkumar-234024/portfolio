@@ -27,22 +27,22 @@ const socialIconMap: Record<string, React.ReactNode> = {
 
 interface FormData {
   name: string;
-  email: string;
-  message: string;
+  subject: string;
+  body: string;
 }
 
 interface FormErrors {
   name?: string;
-  email?: string;
-  message?: string;
+  subject?: string;
+  body?: string;
 }
 
 export default function Contact() {
   const { personal, socialLinks } = portfolioData;
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    email: "",
-    message: "",
+    subject: "",
+    body: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -52,14 +52,10 @@ export default function Contact() {
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    else if (formData.message.trim().length < 10)
-      newErrors.message = "Message must be at least 10 characters";
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.body.trim()) newErrors.body = "Message is required";
+    else if (formData.body.trim().length < 10)
+      newErrors.body = "Message must be at least 10 characters";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -71,27 +67,19 @@ export default function Contact() {
     setIsLoading(true);
     setSubmitError(null);
 
-    const emailBody =
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`;
-
     try {
-      const res = await fetch(
-        "https://monacosender.runasp.net/api/Email/send",
-        {
-          method: "POST",
-          headers: {
-            accept: "*/*",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            to: personal.email,
-            subject: `Portfolio Contact from ${formData.name}`,
-            body: emailBody,
-          }),
+      const res = await fetch("https://monacosender.runasp.net/api/Email/send", {
+        method: "POST",
+        headers: {
+          accept: "*/*",
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          to: "praveen991210@gmail.com",
+          subject: `${formData.name} -- ${formData.subject}`,
+          body: formData.body,
+        }),
+      });
 
       if (!res.ok) {
         const text = await res.text();
@@ -100,7 +88,7 @@ export default function Contact() {
 
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 4000);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", subject: "", body: "" });
       setErrors({});
     } catch (err: unknown) {
       const message =
@@ -262,7 +250,7 @@ export default function Contact() {
                       ? "border-red-400 dark:border-red-500"
                       : "border-slate-200 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-400"
                   } text-slate-800 dark:text-white placeholder-slate-400 outline-none transition-colors`}
-                  placeholder="Your name"
+                  placeholder="e.g. John Doe"
                 />
                 {errors.name && (
                   <p className="mt-1.5 text-sm text-red-500">{errors.name}</p>
@@ -271,54 +259,55 @@ export default function Contact() {
 
               <div>
                 <label
-                  htmlFor="contact-email"
+                  htmlFor="contact-subject"
                   className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
                 >
-                  Email
+                  Subject
                 </label>
                 <input
-                  id="contact-email"
-                  type="email"
-                  value={formData.email}
+                  id="contact-subject"
+                  type="text"
+                  value={formData.subject}
                   onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
+                    setFormData({ ...formData, subject: e.target.value })
                   }
                   className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border ${
-                    errors.email
+                    errors.subject
                       ? "border-red-400 dark:border-red-500"
                       : "border-slate-200 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-400"
                   } text-slate-800 dark:text-white placeholder-slate-400 outline-none transition-colors`}
-                  placeholder="your@email.com"
+                  placeholder="e.g. Project Collaboration"
                 />
-                {errors.email && (
-                  <p className="mt-1.5 text-sm text-red-500">{errors.email}</p>
+                {errors.subject && (
+                  <p className="mt-1.5 text-sm text-red-500">{errors.subject}</p>
                 )}
               </div>
 
               <div>
                 <label
-                  htmlFor="contact-message"
+                  htmlFor="contact-body"
                   className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
                 >
                   Message
                 </label>
                 <textarea
-                  id="contact-message"
+                  id="contact-body"
                   rows={5}
-                  value={formData.message}
+                  value={formData.body}
                   onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
+                    setFormData({ ...formData, body: e.target.value })
                   }
                   className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border ${
-                    errors.message
+                    errors.body
                       ? "border-red-400 dark:border-red-500"
                       : "border-slate-200 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-400"
                   } text-slate-800 dark:text-white placeholder-slate-400 outline-none transition-colors resize-none`}
-                  placeholder="Tell me about your project..."
+                  placeholder="Hi Praveen, I'd love to discuss a project with you..."
+
                 />
-                {errors.message && (
+                {errors.body && (
                   <p className="mt-1.5 text-sm text-red-500">
-                    {errors.message}
+                    {errors.body}
                   </p>
                 )}
               </div>
