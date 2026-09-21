@@ -130,6 +130,22 @@ const portfolioData: PortfolioData = {
   experience: [
     {
       id: 1,
+      role: "SDE-1",
+      company: "Urban Harvest",
+      location: "Noida, Sec-142, UP",
+      duration: "Sep 2026 – Present",
+      description:
+        "Developing and maintaining scalable web applications using ASP.NET, MVC, Web API, C#, and SQL, with a focus on performance, maintainability, and clean code.",
+      achievements: [
+        "Designed and implemented RESTful Web APIs and backend services to support business-critical application workflows and seamless integration with frontend systems.",
+        "Optimized database operations by improving SQL queries, stored procedures, and data-access logic to enhance application performance and responsiveness.",
+        "Applied Clean Architecture and established software design principles to build modular, testable, and maintainable application components.",
+        "Worked with both Code-First and Database-First development approaches based on project requirements, business workflows, and existing database architecture.",
+        "Collaborated with frontend developers, QA engineers, and project stakeholders to troubleshoot issues, implement features, and deliver reliable solutions within project timelines.",
+      ],
+    },
+    {
+      id: 2,
       role: "Software Developer",
       company: "Intellisoft Technologies",
       location: "Noida, UP",
