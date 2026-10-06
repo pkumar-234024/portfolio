@@ -19,6 +19,7 @@ export interface Experience {
   id: number;
   role: string;
   company: string;
+  companyLink?: string;
   location?: string;
   duration: string;
   description: string;
@@ -131,7 +132,8 @@ const portfolioData: PortfolioData = {
     {
       id: 1,
       role: "SDE-1",
-      company: "Urban Harvest",
+      company: "Momentum",
+      companyLink: "https://www.momentum.limited/",
       location: "Noida, Sec-142, UP",
       duration: "Sep 2026 – Present",
       description:
@@ -148,6 +150,7 @@ const portfolioData: PortfolioData = {
       id: 2,
       role: "Software Developer",
       company: "Intellisoft Technologies",
+      companyLink: "https://www.intellisofttechnologies.com/Home.shtml",
       location: "Noida, UP",
       duration: "Sep 2021 – Aug 2026",
       description:

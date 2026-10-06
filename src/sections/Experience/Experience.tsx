@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiBriefcase, FiCheckCircle } from "react-icons/fi";
+import { FiBriefcase, FiCheckCircle, FiExternalLink } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
@@ -57,8 +57,20 @@ export default function Experience() {
                         <h3 className="text-xl font-bold text-slate-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                           {exp.role}
                         </h3>
-                        <p className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2">
-                          {exp.company}
+                        <p className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2 flex-wrap">
+                          {exp.companyLink ? (
+                            <a
+                              href={exp.companyLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+                            >
+                              <span>{exp.company}</span>
+                              <FiExternalLink size={13} className="opacity-75" />
+                            </a>
+                          ) : (
+                            <span>{exp.company}</span>
+                          )}
                           {exp.location && (
                             <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
                               • {exp.location}
