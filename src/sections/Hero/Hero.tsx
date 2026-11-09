@@ -102,10 +102,11 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-block mb-6 px-4 py-2 rounded-full bg-indigo-100/90 dark:bg-indigo-900/50 backdrop-blur-md border border-indigo-200/60 dark:border-indigo-700/50"
+            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-indigo-100/90 dark:bg-indigo-900/50 backdrop-blur-md border border-indigo-200/60 dark:border-indigo-700/50 shadow-sm"
           >
-            <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">
-              👋 Welcome to my portfolio
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs sm:text-sm font-semibold text-indigo-800 dark:text-indigo-300">
+              SDE I @ Momentum (Urban Harvest) • Modern .NET & AI Tooling
             </span>
           </motion.div>
 
@@ -136,10 +137,36 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto font-medium"
+            className="text-lg text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto font-medium"
           >
             {personal.tagline}
           </motion.p>
+
+          {/* Core Stack & AI Tooling Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="flex flex-wrap items-center justify-center gap-2 mb-10 max-w-3xl mx-auto"
+          >
+            {[
+              "ASP.NET Core",
+              "Web API",
+              "SQL Server",
+              "Clean Architecture",
+              "Cursor",
+              "Claude Code",
+              "Antigravity",
+              "OpenAI Codex",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="px-3 py-1 text-xs font-semibold rounded-full bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/60 shadow-xs"
+              >
+                {badge}
+              </span>
+            ))}
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div

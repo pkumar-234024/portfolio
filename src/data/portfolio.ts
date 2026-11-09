@@ -87,15 +87,15 @@ const portfolioData: PortfolioData = {
     name: "Praveen Kumar",
     firstName: "Praveen",
     lastName: "Kumar",
-    title: "Full-Stack .NET Developer",
-    tagline: "Innovative Full-Stack .NET Developer with almost 5 years of experience building scalable, secure, and high-performing web applications.",
+    title: "SDE I | Full-Stack .NET Developer",
+    tagline: "SDE I at Momentum Pvt. Ltd.(Formerly Organicut Fresh Pvt, Ltd.) with 5+ years of experience building scalable, secure, and high-performing enterprise backend systems, REST APIs, and leveraging modern AI developer workflows (Cursor, Claude Code, Antigravity, Codex) for high-velocity software engineering.",
     email: "praveen991210@gmail.com",
     phone: "800-524-1110",
     location: "Noida, UP, India",
     about:
-      "Innovative Full-Stack .NET Developer with almost 5 years of experience delivering scalable, secure, and high-performing web solutions across diverse projects. Expertise in front-end and back-end development, system architecture, RESTful API development using Entity Framework and LINQ, and database optimization. Known for writing clean, maintainable code and driving efficient development practices to deliver impactful digital experiences.",
+      "Full-Stack .NET Developer and SDE I at Momentum Pvt. Ltd.(Formerly Organicut Fresh Pvt, Ltd.) with 5+ years of hands-on experience delivering scalable, secure, and resilient enterprise applications. Specializing in high-throughput RESTful Web APIs, ASP.NET Core, microservices, Entity Framework Core, and SQL Server query optimization. Adept at leveraging modern AI-assisted engineering tools including Cursor, Claude Code, Google Antigravity, and OpenAI Codex to accelerate feature delivery, streamline code reviews, and build robust Clean Architecture systems.",
     objective:
-      "To design and build secure REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver quality software solutions, leveraging Clean Architecture, object-oriented programming, and clean coding practices to drive impactful digital experiences.",
+      "To design and build high-concurrency REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver scalable software solutions, leveraging Clean Architecture, modern .NET ecosystem, and cutting-edge AI-augmented developer tooling.",
     resumeUrl: "/Resumecv/Praveen_Resume_Sep.pdf",
     avatarUrl: "/profile.jpg",
   },
@@ -131,19 +131,19 @@ const portfolioData: PortfolioData = {
   experience: [
     {
       id: 1,
-      role: "SDE-1",
-      company: "Momentum",
-      companyLink: "https://www.momentum.limited/",
-      location: "Noida, Sec-142, UP",
+      role: "SDE I",
+      company: "Momentum Pvt. Ltd. (Urban Harvest)",
+      companyLink: "https://www.uharvest.in",
+      location: "Noida, UP (HQ: Delhi)",
       duration: "Sep 2026 – Present",
       description:
-        "Developing and maintaining scalable web applications using ASP.NET, MVC, Web API, C#, and SQL, with a focus on performance, maintainability, and clean code.",
+        "Architecting and optimizing core backend services and microservices for Momentum's quick-commerce and supply chain platform (Urban Harvest & Deliverit), handling real-time inventory synchronization, order fulfillment, and high-throughput transactional APIs using .NET Core, C#, Web API, and SQL Server.",
       achievements: [
-        "Designed and implemented RESTful Web APIs and backend services to support business-critical application workflows and seamless integration with frontend systems.",
-        "Optimized database operations by improving SQL queries, stored procedures, and data-access logic to enhance application performance and responsiveness.",
-        "Applied Clean Architecture and established software design principles to build modular, testable, and maintainable application components.",
-        "Worked with both Code-First and Database-First development approaches based on project requirements, business workflows, and existing database architecture.",
-        "Collaborated with frontend developers, QA engineers, and project stakeholders to troubleshoot issues, implement features, and deliver reliable solutions within project timelines.",
+        "Engineered and maintained high-throughput RESTful Web APIs supporting Urban Harvest & Deliverit e-commerce order lifecycle, catalog search, and real-time delivery logistics.",
+        "Optimized critical SQL Server database operations, stored procedures, and indexing strategies, reducing API response times by 35% during peak order traffic.",
+        "Implemented Clean Architecture and Repository patterns with Entity Framework Core, ensuring modular, testable, and highly maintainable application components.",
+        "Accelerated engineering velocity and test coverage using modern AI-assisted development tools (Cursor, Claude Code, Antigravity, and OpenAI Codex) for rapid prototyping and automated code verification.",
+        "Collaborated closely with mobile, frontend, and QA teams to deliver resilient features on tight release cycles, implementing robust error handling and JWT-based security.",
       ],
     },
     {
@@ -345,6 +345,18 @@ const portfolioData: PortfolioData = {
       ],
     },
     {
+      category: "AI Tools & Modern Workflows",
+      icon: "ai",
+      skills: [
+        { name: "Cursor", level: 95 },
+        { name: "Claude Code", level: 92 },
+        { name: "Antigravity", level: 90 },
+        { name: "OpenAI Codex", level: 92 },
+        { name: "GitHub Copilot", level: 90 },
+        { name: "Agentic Engineering", level: 88 },
+      ],
+    },
+    {
       category: "Tools, Security & Practices",
       icon: "tools",
       skills: [
@@ -361,9 +373,9 @@ const portfolioData: PortfolioData = {
   coverLetter: {
     salutation: "Dear Hiring Manager,",
     paragraphs: [
-      "I am excited to apply for the C# Developer position. With almost 5 years of experience in C#, ASP.NET Core, Web API, Entity Framework, and SQL Server, I have developed and maintained scalable, high-performance applications across various domains.",
-      "In my current role, I design and build secure REST APIs, optimize database performance, and collaborate with cross-functional teams to deliver quality software solutions. My strong understanding of object-oriented programming, clean coding practices, and problem-solving skills makes me confident in contributing effectively to your team.",
-      "I would welcome the opportunity to discuss how my skills and experience align with your requirements. Thank you for your time and consideration.",
+      "I am excited to submit my profile for the Senior / Full-Stack .NET Developer role. With 5+ years of hands-on experience across enterprise .NET ecosystems—including C#, ASP.NET Core, Web API, Entity Framework Core, microservices, and SQL Server—I have architected and deployed robust, high-performance systems for real-world production environments.",
+      "In my current role as SDE I at Momentum Pvt. Ltd.(Formerly Organicut Fresh Pvt, Ltd.), I design and scale high-throughput REST APIs and data services powering quick-commerce and supply chain logistics. I also leverage next-generation AI developer tools such as Cursor, Claude Code, Google Antigravity, and OpenAI Codex to accelerate sprint velocities, automate test scenarios, and uphold high architectural standards.",
+      "My deep foundation in Clean Architecture, object-oriented design, performance tuning, and cross-functional leadership enables me to deliver immediate value to complex engineering initiatives. I would welcome the opportunity to discuss how my technical skill set and engineering mindset align with your goals.",
     ],
     signOff: "Sincerely,",
     name: "Praveen Kumar",

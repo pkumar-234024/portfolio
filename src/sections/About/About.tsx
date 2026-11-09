@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiCode, FiServer, FiTool, FiDatabase, FiAward, FiBookOpen } from "react-icons/fi";
+import { TbSparkles } from "react-icons/tb";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
@@ -8,6 +9,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   backend: <FiServer className="text-purple-500" size={24} />,
   database: <FiDatabase className="text-blue-500" size={24} />,
   tools: <FiTool className="text-pink-500" size={24} />,
+  ai: <TbSparkles className="text-cyan-500" size={24} />,
 };
 
 export default function About() {

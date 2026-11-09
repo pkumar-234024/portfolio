@@ -20,6 +20,7 @@ import {
   TbDatabaseSearch,
   TbLayersIntersect,
   TbBrandAzure,
+  TbSparkles,
 } from "react-icons/tb";
 import {
   SiDotnet,
@@ -32,6 +33,9 @@ import {
   SiGit,
   SiPostman,
   SiSelenium,
+  SiClaude,
+  SiOpenai,
+  SiGithubcopilot,
 } from "react-icons/si";
 import { DiMsqlServer, DiVisualstudio } from "react-icons/di";
 import { VscAzure, VscAzureDevops } from "react-icons/vsc";
@@ -45,6 +49,40 @@ interface SkillMeta {
   bgLight: string;
   tag: string;
 }
+
+const CursorIcon = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M5.5 3.2L18.8 11.2C19.8 11.8 19.6 13.3 18.5 13.6L13.6 15L10.8 19.8C10.2 20.8 8.7 20.7 8.3 19.6L4.2 4.6C3.9 3.5 4.8 2.8 5.5 3.2Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const AntigravityIcon = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="3.2" fill="currentColor" />
+    <ellipse cx="12" cy="12" rx="9.5" ry="4.2" transform="rotate(-30 12 12)" />
+    <ellipse cx="12" cy="12" rx="9.5" ry="4.2" transform="rotate(30 12 12)" />
+  </svg>
+);
 
 const skillMetaMap: Record<string, SkillMeta> = {
   // Backend & .NET
@@ -210,6 +248,44 @@ const skillMetaMap: Record<string, SkillMeta> = {
     bgLight: "rgba(59, 130, 246, 0.15)",
     tag: "Design Principles",
   },
+
+  // AI Tools & Modern Workflows
+  "Cursor": {
+    icon: CursorIcon,
+    color: "#0284C7",
+    bgLight: "rgba(2, 132, 199, 0.15)",
+    tag: "AI-First IDE",
+  },
+  "Claude Code": {
+    icon: SiClaude,
+    color: "#D97706",
+    bgLight: "rgba(217, 119, 6, 0.15)",
+    tag: "Agentic AI CLI",
+  },
+  "Antigravity": {
+    icon: AntigravityIcon,
+    color: "#4F46E5",
+    bgLight: "rgba(79, 70, 229, 0.15)",
+    tag: "Agentic IDE",
+  },
+  "OpenAI Codex": {
+    icon: SiOpenai,
+    color: "#10A37F",
+    bgLight: "rgba(16, 163, 127, 0.15)",
+    tag: "Code Intelligence",
+  },
+  "GitHub Copilot": {
+    icon: SiGithubcopilot,
+    color: "#8957E5",
+    bgLight: "rgba(137, 87, 229, 0.15)",
+    tag: "Pair Programmer",
+  },
+  "Agentic Engineering": {
+    icon: TbSparkles,
+    color: "#EC4899",
+    bgLight: "rgba(236, 72, 153, 0.15)",
+    tag: "Multi-Agent Workflows",
+  },
 };
 
 const categoryIconMap: Record<string, React.ReactNode> = {
@@ -217,6 +293,7 @@ const categoryIconMap: Record<string, React.ReactNode> = {
   frontend: <FiCode className="text-indigo-500" size={24} />,
   database: <FiDatabase className="text-blue-500" size={24} />,
   tools: <FiTool className="text-pink-500" size={24} />,
+  ai: <TbSparkles className="text-cyan-500" size={24} />,
 };
 
 const categoryBadgeGradients: Record<string, string> = {
@@ -224,6 +301,7 @@ const categoryBadgeGradients: Record<string, string> = {
   frontend: "from-indigo-500/10 to-blue-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
   database: "from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
   tools: "from-pink-500/10 to-rose-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
+  ai: "from-cyan-500/10 to-blue-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
 };
 
 const filterTabs = [
@@ -232,6 +310,7 @@ const filterTabs = [
   { id: "frontend", label: "Frontend", icon: FiCode },
   { id: "database", label: "Database & Cloud", icon: FiDatabase },
   { id: "tools", label: "Tools & Architecture", icon: FiTool },
+  { id: "ai", label: "AI Developer Tools", icon: TbSparkles },
 ];
 
 export default function Skills() {

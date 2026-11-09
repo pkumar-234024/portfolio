@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiCopy, FiCheck, FiMail, FiFileText, FiDownload } from "react-icons/fi";
+import {
+  FiCopy,
+  FiCheck,
+  FiMail,
+  FiFileText,
+  FiDownload,
+} from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 import portfolioData from "../../data/portfolio";
 
@@ -9,7 +15,7 @@ export default function CoverLetter() {
   const [copied, setCopied] = useState(false);
 
   const fullLetterText = `${coverLetter.salutation}\n\n${coverLetter.paragraphs.join(
-    "\n\n"
+    "\n\n",
   )}\n\n${coverLetter.signOff}\n${coverLetter.name}`;
 
   const handleCopy = () => {
@@ -47,17 +53,21 @@ export default function CoverLetter() {
                   Application Letter
                 </h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Candidate: <span className="font-semibold text-indigo-600 dark:text-indigo-400">{personal.name}</span> | Full-Stack .NET Developer
+                  Candidate:{" "}
+                  <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                    {personal.name}
+                  </span>{" "}
+                  | Full-Stack .NET Developer
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
               <motion.a
-                href="/Resumecv/PRAVEEN-COVER-LETTER.pdf"
+                href="/Resumecv/coverletter.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="PRAVEEN-COVER-LETTER.pdf"
+                download="coverletter.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/50 transition-all text-sm font-medium"
