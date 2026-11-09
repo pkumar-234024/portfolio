@@ -24,6 +24,7 @@ export interface Experience {
   duration: string;
   description: string;
   achievements: string[];
+  techStack?: string[];
 }
 
 export interface Education {
@@ -120,6 +121,7 @@ const portfolioData: PortfolioData = {
 
   navLinks: [
     { label: "Home", href: "#hero" },
+    { label: "Overview", href: "#bento" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
@@ -145,6 +147,17 @@ const portfolioData: PortfolioData = {
         "Accelerated engineering velocity and test coverage using modern AI-assisted development tools (Cursor, Claude Code, Antigravity, and OpenAI Codex) for rapid prototyping and automated code verification.",
         "Collaborated closely with mobile, frontend, and QA teams to deliver resilient features on tight release cycles, implementing robust error handling and JWT-based security.",
       ],
+      techStack: [
+        "ASP.NET Core",
+        "C#",
+        "RESTful Web APIs",
+        "Entity Framework Core",
+        "SQL Server",
+        "Clean Architecture",
+        "Cursor",
+        "Claude Code",
+        "Antigravity",
+      ],
     },
     {
       id: 2,
@@ -162,6 +175,16 @@ const portfolioData: PortfolioData = {
         "Championed best coding practices and code reviews to maintain high-quality standards across the team.",
         "Mentored and trained interns, leading to a 30% improvement in their technical skills, confidence, and contribution to project success.",
         "Collaborated cross-functionally with front-end developers, QA teams, and project managers to ensure seamless integration and on-time delivery.",
+      ],
+      techStack: [
+        "ASP.NET Core",
+        "C#",
+        "ASP.NET MVC",
+        "Web API",
+        "Entity Framework",
+        "SQL Server",
+        "Stored Procedures",
+        "Clean Architecture",
       ],
     },
   ],

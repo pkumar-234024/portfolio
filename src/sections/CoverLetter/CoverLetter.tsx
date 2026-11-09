@@ -64,10 +64,10 @@ export default function CoverLetter() {
 
             <div className="flex items-center gap-3">
               <motion.a
-                href="/Resumecv/coverletter.pdf"
+                href="/Resumecv/PRAVEEN-COVER-LETTER.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="coverletter.pdf"
+                download="Praveen_Kumar_Cover_Letter.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/50 transition-all text-sm font-medium"

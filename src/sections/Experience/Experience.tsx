@@ -99,6 +99,19 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
+
+                    {exp.techStack && exp.techStack.length > 0 && (
+                      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-700/50 flex flex-wrap gap-1.5">
+                        {exp.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 text-xs font-medium rounded-lg bg-indigo-50/80 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-100/60 dark:border-indigo-800/30"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 </div>
 

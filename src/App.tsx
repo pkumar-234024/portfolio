@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Hero from "./sections/Hero/Hero";
 
 // Lazy load sections for performance
+const BentoGridPortfolio = lazy(() => import("./components/BentoGridPortfolio"));
 const About = lazy(() => import("./sections/About/About"));
 const Experience = lazy(() => import("./sections/Experience/Experience"));
 const Projects = lazy(() => import("./sections/Projects/Projects"));
@@ -35,6 +36,9 @@ export default function App() {
 
       <main>
         <Hero />
+        <Suspense fallback={<SectionLoader />}>
+          <BentoGridPortfolio />
+        </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <About />
         </Suspense>
